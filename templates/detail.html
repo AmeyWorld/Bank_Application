@@ -1,0 +1,142 @@
+{% extends 'basic.html' %}
+
+{%block title%} Details {% endblock %}
+
+{%block body%}
+<br>
+<h3 style= "color:black">Hello {{u.first_name}} {{u.last_name}} </h3>
+<hr color=black>
+
+<div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-12 col-md-10">
+        <div class="card mb-10">
+          <div class="card-body">
+            <h1 class="text-center" style= "color:Purple" > *** Account Information ***</h1>
+            <hr>
+             <table class="table table-bordered" id=t2>
+              <thead class="table-warning">
+                <tr>
+                  <th scope="col">Account No</th>
+                  <th scope="col">Account Type </th>
+                  <th scope="col">Age</th>
+                  <th scope="col">Balance</th>
+                  <th scope="col">Lone</th>
+                  <th scope="col">FD</th>
+                </tr>
+              </thead>
+                <tbody>
+                <tr>
+                    <td><b>{{bank_obj1.cust_acc_no}}</b></td>
+                    <td><b>{{bank_obj1.cust_acc_type}}</b></td>
+                    <td><b>{{bank_obj1.cust_age}}</b></td>
+                    <td><b>{{bank_obj1.cust_balance}}</b></td>
+                    <td><b>{{bank_obj1.cust_lone}}</b></td>
+                    <td><b>{{bank_obj1.cust_FD}}</b></td>
+                </tr>
+
+                </tbody>
+             </table>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+<div class="container-fluid px-5 my-5">
+<table  cellspacing="50"  width="30%" align="left"><br>
+    <tr>
+        <td>
+           <button type="button" onclick="location.href='{% url 'deposit' %}'" class="btn btn-secondary btn-lg btn-block">Deposit Money To Account</button>
+        </td>
+    </tr>
+</table>
+</div>
+
+<div class="container-fluid px-5 my-5">
+<table  cellspacing="50"  width="30%" align="left"><br>
+    <tr>
+        <td>
+           <button type="button" onclick="location.href='{% url 'withdraw' %}'" class="btn btn-secondary btn-lg btn-block">Withdraw Money From Account</button>
+        </td>
+    </tr>
+</table>
+</div>
+
+<div class="container-fluid px-5 my-5">
+<table  cellspacing="50"  width="30%" align="left"><br>
+    <tr>
+        <td>
+           <button type="button" onclick="location.href='{% url 'lone' %}'" class="btn btn-secondary btn-lg btn-block">Apply For Lone Case</button>
+        </td>
+    </tr>
+</table>
+</div>
+
+<div class="container-fluid px-5 my-5">
+<table  cellspacing="50"  width="30%" align="left"><br>
+    <tr>
+        <td>
+           <button type="button" onclick="location.href='{% url 'Fd' %}'" class="btn btn-secondary btn-lg btn-block">Make A FD</button>
+        </td>
+    </tr>
+</table>
+</div>
+
+<div class="container-fluid px-5 my-5">
+<table  cellspacing="50"  width="30%" align="left"><br>
+    <tr>
+        <td>
+           <button type="button" onclick="location.href='{% url 'send_money' %}'" class="btn btn-secondary btn-lg btn-block">Send Money</button>
+        </td>
+    </tr>
+</table>
+</div>
+
+<div class="container-fluid px-5 my-5">
+<table  cellspacing="50"  width="30%" align="left"><br>
+    <tr>
+        <td>
+           <button type="button" onclick="location.href='{% url 'req_money' %}'" class="btn btn-secondary btn-lg btn-block">Request For Money</button>
+        </td>
+    </tr>
+</table>
+</div>
+
+<div class="container-fluid px-5 my-5">
+<table  cellspacing="50"  width="30%" align="left"><br>
+    <tr>
+        <td>
+           <button type="button" onclick="location.href='{% url 'cust_add' %}'" class="btn btn-secondary btn-lg btn-block">Request For Change Address</button>
+        </td>
+    </tr>
+</table>
+</div>
+
+<div class="container-fluid px-5 my-5">
+<table  cellspacing="50"  width="15%" align="right"><br>
+    <tr>
+        <td>
+           <button type="button" onclick="location.href='{% url 'select_acc' %}'" class="btn btn-dark btn-lg btn-block">Go To Select Acc Page</button>
+        </td>
+    </tr>
+</table>
+</div>
+
+
+<div class="container-fluid px-5 my-5">
+  <table  cellspacing="50"  width="15%" align="right"><br>
+      <tr>
+        <td>
+            <form action="{% url 'logout' %}" method="post">
+            {% csrf_token %}
+            <input type="submit" name="logout" class="btn btn-dark btn-lg btn-block" value="Log Out">
+          </form>
+        </td>
+      </tr>
+  </table>
+</div>
+
+{% endblock %}

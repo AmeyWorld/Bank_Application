@@ -1,0 +1,67 @@
+{% extends 'basic.html' %}
+
+{%block title%} Details {% endblock %}
+
+{%block body%}
+<br>
+<h3 style= "color:black">Hello {{u.first_name}} {{u.last_name}} </h3>
+<hr color=black>
+<h5 style= "color:black" class="text-center">Please Select Account</h5>
+<br>
+
+<div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-12 col-md-10">
+        <div class="card mb-10">
+          <div class="card-body">
+            <table class="table table-bordered" id=t2>
+                <thead class="table-warning">
+                    <tr>
+                    <th scope="col">Account No</th>
+                    <th scope="col">Account Type</th>
+                    <th scope="col">Balance</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for b in bank_obj %}
+                    <tr>
+                    <td>
+                        <a style= "color:purple"  href="\detail\{{b.cust_acc_no}}"><b>{{b.cust_acc_no}}</b></a>
+                    </td>
+                    <td><b>{{b.cust_acc_type}}</b></td>
+                    <td><b>{{b.cust_balance}}</b></td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+<div class="container-fluid px-5 my-5">
+<table  cellspacing="50"  width="20%" align="right"><br>
+    <tr>
+        <td>
+           <button type="button" onclick="location.href='{% url 'another_acc' %}'" class="btn btn-primary btn-lg btn-block">Create Another Account</button>
+        </td>
+    </tr>
+</table>
+</div>
+
+<div class="container-fluid px-5 my-5">
+<table  cellspacing="50"  width="15%" align="right"><br>
+    <tr>
+        <td>
+    <form action="{% url 'logout' %}" method="post">
+        {% csrf_token %}
+        <input type="submit" name="logout" class="btn btn-dark btn-lg btn-block" value="Log Out">
+    </form>
+        </td>
+    </tr>
+</table>
+</div>
+
+{% endblock %}

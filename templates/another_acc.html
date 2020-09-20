@@ -1,0 +1,52 @@
+{% extends 'basic.html' %}
+
+{%block title%} Details {% endblock %}
+
+{%block body%}
+
+<div class="jumbotron">
+  <h1 class="display-4">Sign Up, For Another Account !</h1>
+  <p class="lead">Please Enter Basic Details & We Will Create Your's Another Account.</p>
+  <hr class="my-4">
+  <a class="btn btn-primary btn-lg" href="{% url 'select_acc' %}" role="button">Go To Select Account Page</a>
+</div>
+
+<div class="container">
+ <form method="post" action="{% url 'another_acc' %}">{% csrf_token %}
+
+  <div class="form-group row">
+    <label class="col-sm-2 col-form-label" style="color:black" >Select Account Type </label>
+    <div class="col-sm-5">
+    <select name="cust_acc_type" class="btn btn-Info dropdown-toggle">
+      <option disabled="true" selected>-- Select Account Type--</option>
+      <option>Saving</option>
+      <option>Current</option>
+    </select>
+    </div>
+  </div>
+<br>
+   <div class="form-group row">
+    <label class="col-sm-2 col-form-label" style="color:black" >Enter Your Age: </label>
+    <div class="col-sm-5">
+      <input type="number" style="width: 700px;" class="form-control" name="cust_age" required placeholder="Enter Age ....">
+    </div>
+  </div>
+<br>
+  <div class="form-group row">
+    <label class="col-sm-2 col-form-label" style="color:black" >Enter Basic Balance To Start Account : </label>
+    <div class="col-sm-5">
+      <input type="number" style="width: 700px;" class="form-control" name="cust_balance" required placeholder="Enter Amount ....">
+    </div>
+  </div>
+<br>
+  <div class="form-group row">
+    <div class="col-sm-5">
+      <button  type="submit" class="btn btn-primary">Sign Up</button>
+    </div>
+  </div>
+
+</form>
+</div>
+
+
+{% endblock %}

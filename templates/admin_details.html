@@ -1,0 +1,111 @@
+{% extends 'basic.html' %}
+
+{%block title%} Admin-Panel {% endblock %}
+
+{%block body%}
+
+<h3 style= "color:black" >Hello Amey...</h3>
+<hr color=black>
+
+<div class="container-fluid px-5 my-3">
+ <h1 class="text-center" style= "color:black" > *** All Customer Account Information ***</h1>
+ <br>
+ <table class="table table-bordered"  id=t2>
+  <thead class="bg-warning">
+    <tr>
+      <th scope="col">Account No</th>
+      <th scope="col">Name</th>
+      <th scope="col">Account Type </th>
+      <th scope="col">Age</th>
+      <th scope="col">Balance</th>
+      <th scope="col">Lone</th>
+      <th scope="col">FD</th>
+      <th scope="col">Change Address Request</th>
+      <th scope="col">Address Change Request</th>
+      <th scope="col">Delete</th>
+
+
+    </tr>
+  </thead>
+
+  {% for b in bank_obj %}
+    <tbody class="table-info">
+    <tr  style= "color:black" >
+        <td><b>{{b.cust_acc_no}}</b></td>
+        <td><b>{{b.cust_name}}</b></td>
+        <td><b>{{b.cust_acc_type}}</b></td>
+        <td><b>{{b.cust_age}}</b></td>
+        <td><b>{{b.cust_balance}}</b></td>
+        <td><b>{{b.cust_lone}}</b></td>
+        <td><b>{{b.cust_FD}}</b></td>
+        <td><b>{{b.dummy_add}}</b></td>
+        <td>
+            <a style= "color:green"  href="\approve\{{b.cust_acc_no}}"> <b>Approve</b></a>
+            <a style= "color:red"  href="\reject\{{b.cust_acc_no}}"> <b>Reject</b></a>
+        </td>
+        <td>
+            <a style= "color:red"  href="\hard_delete\{{b.cust_acc_no}}"><b>Delete Permanently</b></a><br>
+            <a style= "color:yellow"  href="\soft_delete\{{b.cust_acc_no}}"><b>Delete Temporary </b></a>
+        </td>
+
+    </tr>
+    </tbody>
+   {% endfor %}
+ </table>
+</div>
+
+<br>
+<hr color=black>
+
+<div class="container-fluid px-5 my-3">
+ <h1 class="text-center" style= "color:black" > *** All Customer Deleted Account Information ***</h1>
+ <br>
+ <table class="table table-bordered" id=t1>
+  <thead class="bg-warning">
+    <tr>
+      <th scope="col">Account No</th>
+      <th scope="col">Name</th>
+      <th scope="col">Account Type </th>
+      <th scope="col">Age</th>
+      <th scope="col">Balance</th>
+      <th scope="col">Lone</th>
+      <th scope="col">FD</th>
+      <th scope="col">Delete</th>
+    </tr>
+  </thead>
+
+  {% for b in inactive_acc %}
+    <tbody class="table-info">
+    <tr>
+        <td><b>{{b.cust_acc_no}}</b></td>
+        <td><b>{{b.cust_name}}</b></td>
+        <td><b>{{b.cust_acc_type}}</b></td>
+        <td><b>{{b.cust_age}}</b></td>
+        <td><b>{{b.cust_balance}}</b></td>
+        <td><b>{{b.cust_lone}}</b></td>
+        <td><b>{{b.cust_FD}}</b></td>
+        <td>
+            <a style= "color:green"  href="\recover_acc\{{b.cust_acc_no}}"><b>Recover Account</b></a>
+        </td>
+    </tr>
+    </tbody>
+   {% endfor %}
+ </table>
+</div>
+
+<div class="container-fluid px-5 my-5">
+<table  cellspacing="50"  width="15%" align="right"><br>
+    <tr>
+        <td>
+
+    <form action="{% url 'logout' %}" method="post">
+        {% csrf_token %}
+        <input type="submit" name="logout" class="btn btn-dark btn-lg btn-block" value="Log Out">
+    </form>
+
+        </td>
+    </tr>
+</table>
+</div>
+
+{% endblock %}

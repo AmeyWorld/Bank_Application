@@ -1,0 +1,94 @@
+{% extends 'basic.html' %}
+
+{%block title%} Details {% endblock %}
+
+{%block body%}
+
+<br>
+<h3 style= "color:black ">Hello {{b.cust_name}}</h3>
+<hr color=black>
+
+<div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-12 col-md-10">
+        <div class="card mb-10">
+          <div class="card-body">
+            <h1 class="text-center" style= "color:Purple" > *** Account Information ***</h1>
+            <hr>
+             <table class="table table-bordered" id=t2>
+              <thead class="table-warning">
+                <tr>
+                  <th scope="col">Account No</th>
+                  <th scope="col">Account Type </th>
+                  <th scope="col">Age</th>
+                  <th scope="col">Balance</th>
+                  <th scope="col">Lone</th>
+                  <th scope="col">FD</th>
+                </tr>
+              </thead>
+                <tbody>
+                <tr>
+                    <td><b>{{b.cust_acc_no}}</b></td>
+                    <td><b>{{b.cust_acc_type}}</b></td>
+                    <td><b>{{b.cust_age}}</b></td>
+                    <td><b>{{b.cust_balance}}</b></td>
+                    <td><b>{{b.cust_lone}}</b></td>
+                    <td><b>{{b.cust_FD}}</b></td>
+                </tr>
+                </tbody>
+             </table>
+                <br><br>
+                <div class="container-fluid px-3">
+                  <form action="{% url 'lone' %}" method="post">
+                  {% csrf_token %}
+                  <div class="form-group row">
+                      <label class="col-sm-3 col-form-label" style= "color:black"><b>Enter Amount For Lone Case:</b></label>
+                    <div class="col-sm-5">
+                      <input type="text" class="form-control" name="lamount" required>
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                      <label class="col-sm-3 col-form-label" style= "color:black"><b>Enter Time Period (in Month's):</b></label>
+                    <div class="col-sm-5">
+                      <input type="text" class="form-control" name="ltime" required>
+                    </div>
+                  </div>
+                      <h5 class="text-left" style= "color:black">INTEREST_RATE = 9.5</h5>
+                      <br>
+
+                  <button type="submit" class="btn btn-success">Lone Case</button>
+                   </form>
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<div class="container-fluid px-5 my-5">
+<table  cellspacing="50"  width="15%" align="right"><br>
+    <tr>
+        <td>
+           <button type="button" onclick="location.href='{% url 'detail' b.cust_acc_no %}'" class="btn btn-dark btn-lg btn-block">Go To Last Menu</button>
+        </td>
+    </tr>
+</table>
+</div>
+
+
+
+<div class="container-fluid px-5 my-5">
+  <table  cellspacing="50"  width="15%" align="right"><br>
+      <tr>
+        <td>
+            <form action="{% url 'logout' %}" method="post">
+            {% csrf_token %}
+            <input type="submit" name="logout" class="btn btn-dark btn-lg btn-block" value="Log Out">
+          </form>
+        </td>
+      </tr>
+  </table>
+</div>
+
+{% endblock %}

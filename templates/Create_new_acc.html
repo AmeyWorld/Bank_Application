@@ -1,0 +1,97 @@
+{% extends 'basic.html' %}
+
+{%block title%} Sign Up {% endblock %}
+
+{%block body%}
+
+<div class="jumbotron">
+  <h1 class="display-4">Sign Up !</h1>
+  <p class="lead">Please Enter Basic Details & We Will Create Your's Account.</p>
+  <hr class="my-2">
+  <p>If You Have Account Number Please Go To LogIn Page By Clicking Below LogIn Button.</p>
+  <a class="btn btn-primary btn-lg" href="/login" role="button">Log In</a>
+</div>
+
+<h1 class="text-center" style= "color:black">Sign Up</h1>
+<hr>
+
+<div class="container">
+
+  <form method="post" action="{% url 'Create_new_acc' %}">{% csrf_token %}
+
+  <div class="form-group row">
+    <label class="col-sm-3 col-form-label" style="color:black" ><b>Enter Your First Name:</b></label>
+    <div class="col-sm-5">
+      <input type="text" style="width: 700px;" class="form-control" name="firstname" required placeholder="Enter Firstname....">
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-3 col-form-label" style="color:black" ><b>Enter Your Last Name:</b></label>
+    <div class="col-sm-5">
+      <input type="text" style="width: 700px;" class="form-control" name="lastname" required placeholder="Enter Lastname ....">
+    </div>
+  </div>
+
+   <div class="form-group row">
+     <label class="col-sm-3 col-form-label" style="color:black" ><b>Enter Your Username:</b> </label>
+    <div class="col-sm-5">
+      <input type="text" style="width: 700px;" class="form-control" name="username" required placeholder="Enter Username ....">
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-3 col-form-label" style="color:black" ><b>Enter Your Password: </b></label>
+    <div class="col-sm-5">
+      <input type="password" style="width: 700px;" class="form-control" name="password" required placeholder="Enter Password ....">
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-3 col-form-label" style="color:black" ><b>Enter Your Address:</b> </label>
+    <div class="col-sm-5">
+      <input type="text" style="width: 700px;" class="form-control" name="cust_add" required placeholder="Enter Address ....">
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-3 col-form-label" style="color:black" ><b>Enter Your Email ID: </b></label>
+    <div class="col-sm-5">
+      <input type="email" style="width: 700px;" class="form-control" name="email" required placeholder="Enter Email ....">
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-3 col-form-label" style="color:black" ><b>Enter Your Age: </b></label>
+    <div class="col-sm-5">
+      <input type="number" style="width: 700px;" class="form-control" name="cust_age" required placeholder="Enter Age ....">
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-3 col-form-label" style="color:black" ><b>Select Account Type: </b></label>
+    <div class="col-sm-5">
+    <select name="cust_acc_type" class="btn btn-Info dropdown-toggle">
+      <option disabled="true" selected>-- Select Account Type--</option>
+      <option>Saving</option>
+      <option>Current</option>
+    </select>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-3 col-form-label" style="color:black" ><b>Enter Basic Balance To Start Account:</b></label>
+    <div class="col-sm-5">
+      <input type="number" style="width: 700px;" class="form-control" name="cust_balance" required placeholder="Enter Amount ....">
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <div class="col-sm-5">
+      <button  type="submit" class="btn btn-primary"><b>Sign Up</b></button>
+    </div>
+  </div>
+</form>
+
+</div>
+{% endblock %}
