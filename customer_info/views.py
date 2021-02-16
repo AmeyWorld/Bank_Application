@@ -1,12 +1,12 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponseRedirect
-from .models import *
+from. models import *
 import random
 from django.contrib import messages, auth
 from django.urls import reverse
 from django.contrib.auth import authenticate, login, logout
-from django.core.mail import send_mail
-
+# from django.core.mail import send_mail
+# from customer_info.middlewares import auth
 # Create your views here.
 
 def index(request):
@@ -33,7 +33,7 @@ def view_login(request):  # always use different name than just 'login' because 
         return render(request, 'login.html', )
 
 def Create_new_acc(request):
-    acc_no = random.randint(11111,99999)
+    acc_no = random.randint(11111, 99999)
     if request.method == "POST":
         data = request.POST
         firstname = data.get('firstname')
